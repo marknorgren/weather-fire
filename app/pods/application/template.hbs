@@ -1,0 +1,106 @@
+
+<div class="container-fluid">
+<h2 id="title">weather</h2>
+
+{{outlet}}
+
+
+{{!-- {{#each attributes as |modelJSON|}}
+  <ul>
+    {{#each-in modelJSON as |key value|}}
+      <li>{{key}}: {{value}}</li>
+    {{/each-in}}
+  </ul>
+{{/each}} --}}
+
+
+
+{{#each model as |dataPoint|}}
+
+<h2>Last Reading: {{format-datetime dataPoint.datetime}}</h2>
+
+
+<div class="row">
+  <div class="col-md-6">
+
+
+<h2>Today's Temperature</h2>
+<p>Current Temperature: {{dataPoint.tempF}}</p>
+
+
+<p>Today's Max: {{dataPoint.tempFDaysMax}} - {{format-timesince dataPoint.tempFDaysMaxTime}} @ {{format-datetime dataPoint.tempFDaysMaxTime}} </p>
+<p>Today's Min: {{dataPoint.tempFDaysMin}} - {{format-timesince dataPoint.tempFDaysMinTime}} @ {{format-datetime dataPoint.tempFDaysMinTime}}</p>
+
+<div class="row">
+<div class="col-xs-10">
+<table class="table table-hover ">
+<tbody>
+ <tr><td>(Temperature-Humidity) Difference</td><td> {{format-temperature-dewpoint  dataPoint.tempF dataPoint.dewpoint}}</td></tr>
+ <tr><td>(Dewpoint-Humidity) Difference</td><td> {{format-humidity-dewpoint  dataPoint.humidity dataPoint.dewpoint}}</td></tr>
+ <tr><td>Humidity</td><td> {{dataPoint.humidity}} </td></tr>
+ <tr><td>Dewpoint</td><td> {{dataPoint.dewpoint}} </td></tr>
+ <tr><td>Pressure</td><td> {{dataPoint.pressure}} </td></tr>
+ <tr><td>Heat Index</td><td> {{dataPoint.heatIndex}} </td></tr>
+ <tr><td>Windchill</td><td> {{dataPoint.windChill}} </td></tr>
+ </tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div class="col-md-6">
+<h2>Today's Wind</h2>
+<p>Current Wind: {{dataPoint.wind}}</p>
+<p>Max Wind Last: 2mins={{dataPoint.windMaxLast2Mins}}, data10min={{dataPoint.windMaxLast10Mins}} </p>
+<p>Today's Max: {{dataPoint.windSpeedDaysMax}} - {{format-timesince dataPoint.windSpeedDaysMaxTime}} @ {{format-datetime dataPoint.windSpeedDaysMaxTime}}</p>
+</div>
+
+</div>
+
+
+
+
+
+<pre>
+  datetime - {{dataPoint.datetime}}
+  dewpoint - {{dataPoint.dewpoint}}
+  evapotranspiration - {{dataPoint.evapotranspiration}}
+  heatIndex - {{dataPoint.heatIndex}}
+  humidity - {{dataPoint.humidity}}
+  lastdata - {{dataPoint.lastdata}}
+  normalizedPressure - {{dataPoint.normalizedPressure}}
+  pressure - {{dataPoint.pressure}}
+  rain0rate - {{dataPoint.rain0rate}}
+  rain0totalSumday - {{dataPoint.rain0totalSumday}}
+  rain0TotalLast24Hours - {{dataPoint.rain0TotalLast24Hours}}
+  rain0totalMonthsum - {{dataPoint.rain0totalMonthsum}}
+  raintotal - {{dataPoint.raintotal}}
+  solarRadiation - {{dataPoint.solarRadiation}}
+  tempF - {{dataPoint.tempF}}
+  tempFDaysMax - {{dataPoint.tempFDaysMax}}
+  tempFDaysMaxTime - {{dataPoint.tempFDaysMaxTime}}
+  tempFDaysMaxTimeDate - {{dataPoint.tempFDaysMaxTimeDate}}
+  tempFDaysMin - {{dataPoint.tempFDaysMin}}
+  tempFDaysMinTime - {{dataPoint.tempFDaysMinTime}}
+  uptime - {{dataPoint.uptime}}
+  uvindex - {{dataPoint.uvindex}}
+  wind - {{dataPoint.wind}}
+  windAverage - {{dataPoint.windAverage}}
+  windAvgLast10Mins - {{dataPoint.windAvgLast10Mins}}
+  windChill - {{dataPoint.windChill}}
+  windChillAvgLast30Mins - {{dataPoint.windChillAvgLast30Mins}}
+  windChillAvgLastHour - {{dataPoint.windChillAvgLastHour}}
+  windChillMinToday - {{dataPoint.windChillMinToday}}
+  windChillMinTodayTime - {{dataPoint.windChillMinTodayTime}}
+  windDirection - {{dataPoint.windDirection}}
+  windMaxLast10Mins - {{dataPoint.windMaxLast10Mins}}
+  windMaxLast2Mins - {{dataPoint.windMaxLast2Mins}}
+  windMaxLast5Mins - {{dataPoint.windMaxLast5Mins}}
+  windSpeedDaysMax - {{dataPoint.windSpeedDaysMax}}
+  windSpeedDaysMaxTime - {{dataPoint.windSpeedDaysMaxTime}}
+  windSpeedDaysMin - {{dataPoint.windSpeedDaysMin}}
+  windSpeedDaysMinTime - {{dataPoint.windSpeedDaysMinTime}}
+</pre>
+{{/each}}
+
+</div>
